@@ -1,36 +1,61 @@
 package testapp.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
 public class MainWindowController {
 
-    @FXML Button adminButton;
-    @FXML Button pathfindingButton;
+    @FXML Button switchButton;
+    @FXML Pane contentWindow;
+
+    PathfindingWindowController pathfindingController;
+    AdminWindowController adminController;
+
+    enum MainWindowScene {
+        PATHFINDING,
+        ADMIN
+    }
+
+    MainWindowScene currentView = MainWindowScene.PATHFINDING;
 
     public MainWindowController() throws IOException {
+        pathfindingController = new PathfindingWindowController();
+        adminController = new AdminWindowController();
+    }
+
+    private void switchTo(MainWindowScene scene) {
+        switch (scene) {
+            case ADMIN:
+                currentView = MainWindowScene.ADMIN;
+                contentWindow.getChildren().setAll(adminController);
+                switchButton.setText("Admin");
+                break;
+
+            case PATHFINDING:
+                currentView = MainWindowScene.PATHFINDING;
+                contentWindow.getChildren().setAll(pathfindingController);
+                switchButton.setText("Pathfinding");
+                break;
+        }
     }
 
     @FXML
-    public void adminButtonClicked() throws IOException {
-        Stage primaryStage = (Stage)adminButton.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/testapp/view/MainWindowAdminView.fxml"));
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.show();
+    protected void initialize() {
+        this.switchTo(MainWindowScene.PATHFINDING);
     }
 
     @FXML
-    public void pathfindingButtonClicked() throws IOException {
-        Stage primaryStage = (Stage)pathfindingButton.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/testapp/view/MainWindowPathfindingView.fxml"));
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.show();
+    public void switchButtonClicked() throws IOException {
+        switch (currentView) {
+            case ADMIN:
+                this.switchTo(MainWindowScene.PATHFINDING);
+                break;
+            case PATHFINDING:
+                this.switchTo(MainWindowScene.ADMIN);
+                break;
+        }
     }
 }

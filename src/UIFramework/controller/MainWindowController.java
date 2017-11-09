@@ -1,4 +1,4 @@
-package testapp.controller;
+package UIFramework.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +9,9 @@ import java.io.IOException;
 public class MainWindowController {
 
     @FXML Button switchButton;
+    @FXML Button btZoomin;
+    @FXML Button btZoomout;
+    @FXML Button btRecenter;
     @FXML Pane contentWindow;
 
     PathfindingWindowController pathfindingController;
@@ -31,19 +34,23 @@ public class MainWindowController {
             case ADMIN:
                 currentView = MainWindowScene.ADMIN;
                 contentWindow.getChildren().setAll(adminController);
-                switchButton.setText("Admin");
+                switchButton.setText("Logoff");
+                switchButton.requestFocus();
                 break;
 
             case PATHFINDING:
                 currentView = MainWindowScene.PATHFINDING;
                 contentWindow.getChildren().setAll(pathfindingController);
-                switchButton.setText("Pathfinding");
+                switchButton.setText("Admin Login");
+                switchButton.requestFocus();
                 break;
         }
     }
 
     @FXML
-    protected void initialize() {
+    protected void initialize()
+    {
+        switchButton.requestFocus(); //redirect cursor on switchButton
         this.switchTo(MainWindowScene.PATHFINDING);
     }
 
@@ -57,5 +64,20 @@ public class MainWindowController {
                 this.switchTo(MainWindowScene.ADMIN);
                 break;
         }
+    }
+
+    @FXML
+    public void zoomin() {
+        System.out.printf("Zoom in pressed.\n");
+    }
+
+    @FXML
+    public void zoomout() {
+        System.out.printf("Zoom out pressed.\n");
+    }
+
+    @FXML
+    public void recenter() {
+        System.out.printf("Recenter pressed.\n");
     }
 }

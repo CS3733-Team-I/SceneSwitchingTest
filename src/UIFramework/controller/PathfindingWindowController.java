@@ -1,8 +1,7 @@
-package testapp.controller;
+package UIFramework.controller;
 
 import javafx.beans.DefaultProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.SplitPane;
 
 import java.io.IOException;
 
@@ -14,7 +13,7 @@ public class PathfindingWindowController extends MapWindowController {
 
         getMapController().setParent(this);
 
-        FXMLLoader loader = new FXMLLoader(MapWindowController.class.getResource("/testapp/view/PathfindingSidebarView.fxml"));
+        FXMLLoader loader = new FXMLLoader(MapWindowController.class.getResource("/UIFramework/view/PathfindingSidebarView.fxml"));
         loader.setRoot(getSidebarPane());
         loader.setController(new PathfindingSidebarController());
         loader.load();

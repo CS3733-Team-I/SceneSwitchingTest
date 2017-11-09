@@ -1,4 +1,4 @@
-package testapp.controller;
+package UIFramework.controller;
 
 import javafx.beans.DefaultProperty;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ public class AdminWindowController extends MapWindowController {
     public AdminWindowController() throws IOException {
         super();
 
-        FXMLLoader loader = new FXMLLoader(MapWindowController.class.getResource("/testapp/view/AdminSidebarView.fxml"));
+        FXMLLoader loader = new FXMLLoader(MapWindowController.class.getResource("/UIFramework/view/AdminSidebarView.fxml"));
         loader.setRoot(getSidebarPane());
         loader.setController(new AdminSidebarController());
         loader.load();

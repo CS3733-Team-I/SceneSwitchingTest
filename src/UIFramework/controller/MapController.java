@@ -1,4 +1,4 @@
-package testapp.controller;
+package UIFramework.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 
 public class MapController {
     @FXML private ImageView mapImage;
+    @FXML private ImageView pinIcon;
 
     private MapWindowController parent = null;
 

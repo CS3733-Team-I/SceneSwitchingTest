@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BWLayoutTestApplication.iml" filepath="$PROJECT_DIR$/BWLayoutTestApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UIFramework.iml" filepath="$PROJECT_DIR$/UIFramework.iml" />
     </modules>
   </component>
 </project>
